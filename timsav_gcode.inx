@@ -7,15 +7,17 @@
   <dependency type="executable" location="extensions">inkex.py</dependency>
   <param name="tab" type="notebook">
     <page name="plotter_setup" _gui-text="Setup">
-      <param name="pen-up-cmd" type="string" default="M5" _gui-text="Pen Up command">M5</param>
-      <param name="pen-down-cmd" type="string" default="M3" _gui-text="Pen Down command">M3</param>
-      <param name="pen-down-angle" type="float" min="0.0" max="180.0" _gui-text="Pen Down Angle">90</param>
-      <param name="pen-score-angle" type="float" min="0.0" max="180.0" _gui-text="Pen Score Angle">45</param>
-      <param name="pen-draw-angle" type="float" min="0.0" max="180.0" _gui-text="Pen Draw Angle">10</param>
-      <param name="start-delay" type="float" min="0.0" max="10.0" _gui-text="Delay after pen-down command before movement in seconds.">1</param>
-      <param name="stop-delay" type="float" min="0.0" max="10.0" _gui-text="Delay after pen-up command before movement in seconds.">1</param>
-      <param name="xy-feedrate" type="float" min="100.0" max="10000.0" _gui-text="XY axes feedrate in mm/min.">3500.0</param>
+      <param name="pen-up-speed" type="float" min="0" max="10000" _gui-text="Pen Up Speed">3000</param>
+      <param name="pen-down-speed" type="float" min="0" max="10000" _gui-text="Pen Down Speed">1000</param>
+
+      <param name="pen-up-z" type="float" min="-100.0" max="100.0" _gui-text="Pen Up Z">10</param>
+      <param name="pen-down-z" type="float" min="-100.0" max="100.0" _gui-text="Pen Down Z">-10</param>
+      <param name="pen-score-z" type="float" min="-100.0" max="100.0" _gui-text="Pen Score Z">-5</param>
+      <param name="pen-draw-z" type="float" min="-100.0" max="100.0" _gui-text="Pen Draw Z">-2</param>
+
+      <param name="xy-feedrate" type="float" min="100.0" max="10000.0" _gui-text="XY axes feedrate in mm/min.">2000.0</param>
       <param name="xy-travelrate" type="float" min="100.0" max="10000.0" _gui-text="XY axes travelrate in mm/min.">7000.0</param>
+      <param name="z-feedrate" type="float" min="100.0" max="10000.0" _gui-text="Z axis feedrate in mm/min.">500.0</param>
     </page>
   </param>
 

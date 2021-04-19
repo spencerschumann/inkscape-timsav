@@ -28,37 +28,33 @@ class TimSavGCodeGenerator(inkex.Effect):
         self.context = None
 
     def setup(self):
-        self.arg_parser.add_argument("--pen-up-cmd",
-                                     action="store", type=str,
-                                     dest="pen_up_cmd", default="M5",
-                                     help="Pen Up Command")
-        self.arg_parser.add_argument("--pen-down-cmd",
-                                     action="store", type=str,
-                                     dest="pen_down_cmd", default="M3",
-                                     help="Pen Down Command")
-        self.arg_parser.add_argument("--pen-down-angle",
+        self.arg_parser.add_argument("--pen-up-speed",
                                      action="store", type=float,
-                                     dest="pen_down_angle", default="90.0",
-                                     help="Pen Down Angle")
-        self.arg_parser.add_argument("--pen-score-angle",
+                                     dest="pen_up_speed", default="1000",
+                                     help="Pen Up Speed")
+        self.arg_parser.add_argument("--pen-down-speed",
                                      action="store", type=float,
-                                     dest="pen_score_angle", default="45.0",
-                                     help="Pen Score Angle")
-        self.arg_parser.add_argument("--pen-draw-angle",
+                                     dest="pen_down_speed", default="3000",
+                                     help="Pen Down Speed")
+        self.arg_parser.add_argument("--pen-up-z",
                                      action="store", type=float,
-                                     dest="pen_mark_angle", default="10.0",
-                                     help="Pen Mark Angle")
-        self.arg_parser.add_argument("--start-delay",
+                                     dest="pen_up_z", default="10.0",
+                                     help="Pen Up Z")
+        self.arg_parser.add_argument("--pen-down-z",
                                      action="store", type=float,
-                                     dest="start_delay", default="1",
-                                     help="Delay after pen down command before movement in seconds")
-        self.arg_parser.add_argument("--stop-delay",
+                                     dest="pen_down_z", default="-10.0",
+                                     help="Pen Down Z")
+        self.arg_parser.add_argument("--pen-score-z",
                                      action="store", type=float,
-                                     dest="stop_delay", default="1.0",
-                                     help="Delay after pen up command before movement in seconds")
+                                     dest="pen_score_z", default="-5.0",
+                                     help="Pen Score Z")
+        self.arg_parser.add_argument("--pen-draw-z",
+                                     action="store", type=float,
+                                     dest="pen_mark_z", default="-2.0",
+                                     help="Pen Mark Z")
         self.arg_parser.add_argument("--xy-feedrate",
                                      action="store", type=float,
-                                     dest="xy_feedrate", default="3500.0",
+                                     dest="xy_feedrate", default="2000.0",
                                      help="XY axes feedrate in mm/min")
         self.arg_parser.add_argument("--xy-travelrate",
                                      action="store", type=float,
@@ -66,7 +62,7 @@ class TimSavGCodeGenerator(inkex.Effect):
                                      help="XY axes travelrate in mm/min")
         self.arg_parser.add_argument("--z-feedrate",
                                      action="store", type=float,
-                                     dest="z_feedrate", default="150.0",
+                                     dest="z_feedrate", default="500.0",
                                      help="Z axis feedrate in mm/min")
         self.arg_parser.add_argument("--z-height",
                                      action="store", type=float,
@@ -80,12 +76,15 @@ class TimSavGCodeGenerator(inkex.Effect):
         self.context.generate()
 
     def effect(self):
-        self.context = GCodeContext(self.options.xy_feedrate, self.options.xy_travelrate,
-                                    self.options.start_delay, self.options.stop_delay,
-                                    self.options.pen_up_cmd,
-                                    self.options.pen_down_cmd,
-                                    self.options.pen_down_angle, self.options.pen_score_angle,
-                                    self.options.pen_mark_angle,
+        self.context = GCodeContext(self.options.xy_feedrate,
+                                    self.options.xy_travelrate,
+                                    self.options.z_feedrate,
+                                    self.options.pen_up_speed,
+                                    self.options.pen_down_speed,
+                                    self.options.pen_up_z,
+                                    self.options.pen_down_z,
+                                    self.options.pen_score_z,
+                                    self.options.pen_mark_z,
                                     self.options.input_file)
         parser = SvgParser(self.document.getroot())
         parser.parse()
