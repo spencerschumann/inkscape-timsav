@@ -297,7 +297,7 @@ class SvgParser:
             # first apply the current matrix transform to this node's transform
 
             trans = Transform(node.get("transform"))
-            trans_new = trans_current * trans
+            trans_new = trans_current @ trans
 
             if node.tag == inkex.addNS('g', 'svg') or node.tag == 'g':
                 if node.get(inkex.addNS('groupmode', 'inkscape')) == 'layer':
