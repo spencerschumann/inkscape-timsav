@@ -8,6 +8,7 @@ Disclaimer
 ===========================================
 I am not responsible for any damanage or harm that may have caused by this extension, do so at your own risk
 
+* Modified by: [David Just](https://github.com/DavidJJ/inkscape-timsav)
 * Modified by: [Spencer Schumann](https://github.com/spencerschumann)
 * Modified by: [Brian Ho](http://github.com/kawateihikaru)
 * Original Author: [Marty McGuire](http://github.com/martymcguire)
