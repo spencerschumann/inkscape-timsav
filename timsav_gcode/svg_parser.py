@@ -85,7 +85,7 @@ class SvgIgnoredEntity:
         return
 
 
-class SvgPath(entities.PolyLine):
+class SvgPath(entities.Path):
     def __init__(self):
         super().__init__()
         self.cut_style = 0
