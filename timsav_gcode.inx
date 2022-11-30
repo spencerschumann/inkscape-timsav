@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <inkscape-extension xmlns="http://www.inkscape.org/namespace/inkscape/extension">
-  <_name>TimSav G-Code Output</_name>
+  <name>TimSav G-Code Output</name>
   <id>com.timsav.gcode</id>
   <dependency type="extension">org.inkscape.output.svg.inkscape</dependency>
   <dependency type="executable" location="extensions">timsav_gcode.py</dependency>
-  <dependency type="executable" location="extensions">inkex.py</dependency>
   <param name="tab" type="notebook">
     <page name="plotter_setup" _gui-text="Setup">
       <param name="pen-up-cmd" type="string" default="M5" _gui-text="Pen Up command">M5</param>
@@ -22,11 +21,11 @@
   <output>
     <extension>.gcode</extension>
     <mimetype>application/x-gcode</mimetype>
-    <_filetypename>TimSav Cutter G-Code (*.gcode)</_filetypename>
-    <_filetypetooltip>Toolpath for the TimSav Needle Cutter</_filetypetooltip>
+    <filetypename>TimSav Cutter G-Code (*.gcode)</filetypename>
+    <filetypetooltip>Toolpath for the TimSav Needle Cutter</filetypetooltip>
     <dataloss>true</dataloss>
   </output>
   <script>
-    <command reldir="extensions" interpreter="python">timsav_gcode.py</command>
+    <command location="inx" interpreter="python">timsav_gcode.py</command>
   </script>
 </inkscape-extension>

@@ -8,6 +8,7 @@ Disclaimer
 ===========================================
 I am not responsible for any damanage or harm that may have caused by this extension, do so at your own risk
 
+* Modified by: [David Just](https://github.com/DavidJJ/inkscape-timsav)
 * Modified by: [Spencer Schumann](https://github.com/spencerschumann)
 * Modified by: [Brian Ho](http://github.com/kawateihikaru)
 * Original Author: [Marty McGuire](http://github.com/martymcguire)
@@ -29,11 +30,13 @@ Copy the contents to your Inkscape `extensions/` folder.
 
 Typical locations include:
 
-* OS X - `/Applications/Inkscape.app/Contents/Resources/extensions`
+* OS X 
+    * `/Applications/Inkscape.app/Contents/Resources/extensions` (application version specific)
+    * `~/Library/Application Support/org.inkscape.Inkscape/config/inkscape/extensions` (version agnostic)
 * Linux - `/usr/share/inkscape/extensions`
 * Windows - `C:\Program Files\Inkscape\share\extensions`
 
-you should have 2 files directly under the extensions folder (timsav_gcode.inx, timsave_gcode.py) and the timsav_gcode folder as well.
+you should have 2 files directly under the extensions folder (timsav_gcode.inx, timsav_gcode.py) and the timsav_gcode folder as well.
 
 Usage
 =====
@@ -45,8 +48,10 @@ Usage
 	* Choose **Path | Object to Path**.
 * The path cutting orders are generated based on the svg document hierarchy, you can organize your paths with the XML editor.
     ![Document Property](doc/image2.png)
-    * For score cuts make the path strike **RED** #ff0000 (mind the lower case ff)
-    * For marking cuts make the path strike **BLUE** #0000ff (mind the lower case ff)
+    * For score cuts make the path stroke **RED** #ff0000 (mind the lower case ff)
+    * For marking cuts make the path stroke **BLUE** #0000ff (mind the lower case ff)
+    * For full cuts make the path stroke **BLACK** #000000 (all zeros)
+    * Any other path stroke color will not activate the cut.  (this is to prevent almost-red and almost-blue causing unwanted full cuts.)
     * The id of the path can be set with the editor and will be retained in the gcode's comment (helps with gcode troubleshooting)
 * Save as G-Code:
     ![Document Property](doc/image3.png)
@@ -58,6 +63,5 @@ Usage
 TODOs
 =====
 * Draw arrow for the direction of path for view
-* Rename `*PolyLine` stuff to `*Path` to be less misleading.
 * Parameterize smoothness for curve approximation.
 * Use native curve G-Codes instead of converting to paths?

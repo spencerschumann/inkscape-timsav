@@ -86,16 +86,16 @@ class Arc(Entity):
 		context.codes.append("")
 
 
-class PolyLine(Entity):
+class Path(Entity):
 	def __init__(self):
 		self.segments = None
 		self.cut_style = None
 
 	def __str__(self):
-		return "Polyline consisting of %d segments." % len(self.segments)
+		return "Path consisting of %d segments." % len(self.segments)
 
 	def get_gcode(self, context):
-		"""Emit gcode for drawing polyline"""
+		"""Emit gcode for drawing path"""
 		if hasattr(self, 'segments'):
 			for points in self.segments:
 				start = points[0]
