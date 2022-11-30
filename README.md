@@ -30,11 +30,13 @@ Copy the contents to your Inkscape `extensions/` folder.
 
 Typical locations include:
 
-* OS X - `/Applications/Inkscape.app/Contents/Resources/extensions`
+* OS X 
+    * `/Applications/Inkscape.app/Contents/Resources/extensions` (application version specific)
+    * `~/Library/Application Support/org.inkscape.Inkscape/config/inkscape/extensions` (version agnostic)
 * Linux - `/usr/share/inkscape/extensions`
 * Windows - `C:\Program Files\Inkscape\share\extensions`
 
-you should have 2 files directly under the extensions folder (timsav_gcode.inx, timsave_gcode.py) and the timsav_gcode folder as well.
+you should have 2 files directly under the extensions folder (timsav_gcode.inx, timsav_gcode.py) and the timsav_gcode folder as well.
 
 Usage
 =====

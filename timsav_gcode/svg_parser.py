@@ -88,7 +88,7 @@ class SvgIgnoredEntity:
 class SvgPath(entities.PolyLine):
     def __init__(self):
         super().__init__()
-        self.cut_style = 1
+        self.cut_style = 0
 
     def load(self, node, trans):
         a = node.get('style').split(";")
@@ -97,7 +97,10 @@ class SvgPath(entities.PolyLine):
             self.cut_style = 2
         elif d['stroke'] == "#0000ff":
             self.cut_style = 3
+        elif d['stroke'] == "#000000":
+            self.cut_style = 1
         else:
+            inkex.errormsg(f"Warning: unable to draw node objID: {node.get('id')}. Invalid color detected: {d['stroke']}. Only Black, Red, and Blue are acceptable.")
             pass
 
         d = node.get('d')

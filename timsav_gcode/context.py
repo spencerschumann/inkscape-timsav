@@ -106,12 +106,18 @@ class GCodeContext:
                     print(line)
 
     def start(self, cut_type):
-        if cut_type == 2:
+        if cut_type == 1:
+            #Full cut
+            self.codes.append("%s S%0.2F (pen down through)" % (self.pen_down_cmd, self.pen_down_angle))
+        elif cut_type == 2:
+            #Score cut
             self.codes.append("%s S%0.2F (pen down score)" % (self.pen_down_cmd, self.pen_score_angle))
         elif cut_type == 3:
+            #Marking cut
             self.codes.append("%s S%0.2F (pen down draw)" % (self.pen_down_cmd, self.pen_mark_angle))
         else:
-            self.codes.append("%s S%0.2F (pen down through)" % (self.pen_down_cmd, self.pen_down_angle))
+            # Invalid color detected. Only pretend to cut.
+            self.codes.append("%s (pen down invalid color)" % self.pen_up_cmd)
         self.codes.append("G4 P%d (wait %dms)" % (self.start_delay, self.start_delay))
         self.drawing = True
 
